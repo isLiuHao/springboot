@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.EmployeeDao">
+    <select id="getAll" resultType="Employee">
+        select e.id,e.lastName,e.email,e.gender,d.departmentName from employee e,department d where e.d_id = d.departmentId
+    </select>
+    <select id="getEmployeeById" resultType="Employee">
+        select * from employee where id = #{id}
+    </select>
+    <select id="save" parameterType="Employee">
+        insert into employee(lastname,email,gender,d_id) values(#{lastname},#{email},#{gender},#{departmentId})
+    </select>
+    <select id="delete" parameterType="int">
+        delete from employee where id=#{id}
+    </select>
+</mapper>

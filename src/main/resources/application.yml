@@ -1,0 +1,18 @@
+#根目录
+server:
+  servlet:
+    context-path: /kuang
+
+# 数据库
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url:  jdbc:mysql://172.18.56.100:3306/system?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 整合mybatis
+mybatis:
+  type-aliases-package: com.example.domain
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
