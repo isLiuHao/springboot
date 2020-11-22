@@ -3,16 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.EmployeeDao">
-    <select id="getAll" resultType="Employee">
-        select e.id,e.lastName,e.email,e.gender,d.departmentName from employee e,department d where e.d_id = d.departmentId
+    <resultMap id="employeeMap" type="employee">
+        <id column="id" property="id"></id>
+        <result property="lastName" column="lastName"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <collection property="department" ofType="department">
+            <id property="id" column="id"></id>
+            <result property="departmentName" column="departmentName"></result>
+        </collection>
+    </resultMap>
+    <select id="getAll" resultMap="employeeMap">
+        select e.id,e.lastName,e.email,e.gender,d.departmentName from employee e,department d where e.d_id = d.id
     </select>
     <select id="getEmployeeById" resultType="Employee">
         select * from employee where id = #{id}
     </select>
-    <select id="save" parameterType="Employee">
-        insert into employee(lastname,email,gender,d_id) values(#{lastname},#{email},#{gender},#{departmentId})
-    </select>
-    <select id="delete" parameterType="int">
+    <insert id="save" parameterType="Employee">
+        insert into employee(lastName,email,gender,d_id) values (#{lastName},#{email},#{gender},#{department.id})
+    </insert>
+    <update id="update" parameterType="Employee">
+        update employee set lastName=#{lastName},email=#{email},gender=#{gender},d_id=#{department.id}  where id=#{id}
+    </update>
+    <delete id="delete" parameterType="int">
         delete from employee where id=#{id}
-    </select>
+    </delete>
 </mapper>

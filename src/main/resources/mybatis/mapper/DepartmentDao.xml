@@ -7,7 +7,7 @@
         select * from department
     </select>
     <select id="getDepartmentById" resultType="Department">
-        select * from department where departmentId = #{departmentId}
+        select * from department where id = #{id}
     </select>
 
 </mapper>

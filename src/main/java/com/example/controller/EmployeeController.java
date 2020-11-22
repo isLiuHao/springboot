@@ -7,10 +7,7 @@ import com.example.domain.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -58,7 +55,7 @@ public class EmployeeController {
     //修改操作
     @PostMapping("/updateEmp")
     public String updateEmp(Employee employee) {
-        employeeDao.save(employee);
+        employeeDao.update(employee);
         return "redirect:/emps";
     }
 

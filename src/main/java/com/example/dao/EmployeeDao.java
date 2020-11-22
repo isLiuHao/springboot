@@ -1,6 +1,7 @@
 package com.example.dao;
 import com.example.domain.Employee;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -18,7 +19,9 @@ public interface EmployeeDao {
     public Employee getEmployeeById(Integer id);
     //增加员工
     public void save(Employee employee);
+    //修改员工
+    public void update(Employee employee);
     //删除员工
-    public Employee delete(Integer id);
+    public void delete(Integer id);
 
 }

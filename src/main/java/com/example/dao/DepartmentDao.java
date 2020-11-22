@@ -14,5 +14,5 @@ public interface DepartmentDao {
     //获取所有部门信息
     public Collection<Department> getDepartments();
     //通过id得到部门
-    public Department getDepartmentById(Integer departmentId);
+    public Department getDepartmentById(Integer id);
 }

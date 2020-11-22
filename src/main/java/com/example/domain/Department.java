@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor //提供类的全参构造
 @NoArgsConstructor  //提供类的无参构造
 public class Department {
-    private Integer departmentId;
+    private Integer id;
     private String departmentName;
 }
